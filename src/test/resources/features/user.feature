@@ -26,3 +26,10 @@ Feature: User Login Controller
     Given admin sets authorization to bearer Token with creates request
     When Admin calls "getLogoutlms" with "GET" http request
     Then Admin recieved 200 status code
+
+    
+    Scenario: User get request
+    Given admin sets authorization to bearer Token with creates request
+    When Admin calls "getallUsers" with "GET" http request
+    Then Admin recieved 200 status code
+    
