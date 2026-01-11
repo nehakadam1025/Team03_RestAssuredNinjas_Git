@@ -1,161 +1,89 @@
-//package stepdefinitions;
-//
-//import static io.restassured.RestAssured.given;
-//
-//import io.cucumber.java.en.Given;
-//import io.cucumber.java.en.When;
-//import io.restassured.RestAssured;
-//import io.restassured.builder.RequestSpecBuilder;
-//import io.restassured.builder.ResponseSpecBuilder;
-//import io.restassured.http.ContentType;
-//import io.restassured.response.Response;
-//import io.restassured.specification.RequestSpecification;
-//import io.restassured.specification.ResponseSpecification;
-//import io.cucumber.java.en.Then;
-//
-//import pojo.LoginResponse;
-//import pojo.LoginTempData;
-//import utils.BaseSpec;
-//
-//public class UserSteps {
-//	RequestSpecification res ;
-//	ResponseSpecification resSpec;
-//	Response response;
-//
-//    String loginPayload =
-//            "{"
-//          + "\"userLoginEmailId\":\"team3@gmail.com\","
-//          + "\"password\":\"ApiHackathon2@3\""
-//          + "}";
-//
-//    RequestSpecification req =
-//            new RequestSpecBuilder()
-//                    .setBaseUri("https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms")
-//                    .setContentType(ContentType.JSON)
-//                    .build();
-//
-//       resSpec = new ResponseSpecBuilder()
-//                    .expectStatusCode(200);
-//     res = given().spec(req).body(loginPayload);
-//
-//
-////    	String loginPayload =
-////    	        "{"
-////    	      + "\"userLoginEmailId\":\"team3@gmail.com\","
-////    	      + "\"password\":\"ApiHackathon2@3\""
-////    	      + "}";
-//
-//
-////        LoginResponse response =
-////                given()
-////                        .spec(BaseSpec.requestSpec())
-////                        .body(loginPayload)
-////                .when()
-////                        .post("/login")
-////                .then()
-////                        .statusCode(200)
-////                        .extract()
-////                        .as(LoginResponse.class);
-////
-////        // ✅ Store token for next APIs
-////        LoginTempData.setToken(response.getToken());
-////        LoginTempData.setUserId(response.getUserId());
-////
-////        System.out.println("Captured Token: " + LoginTempData.getToken());
-////}
-//
-//    @When("Admin calls POST method with valid endpoint")
-//    public void admin_calls_post_method_with_valid_endpoint() {
-//        // This will be implemented for next API (e.g., create user)
-//    	Response response = res.when().post("/login").
-//    			then().spec(resSpec).extract().response();
-//    }
-//
-//    @Then("Admin receives {int} created with auto generated token")
-//    public void admin_receives_created_with_auto_generated_token(Integer statusCode) {
-//        // Assertion will go here
-//    	assertequal(response.getStatusCode(),200);
-//    }
-//}
 package stepdefinitions;
 
 import static io.restassured.RestAssured.given;
 
+import java.io.IOException;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
+//import io.restassured.builder.RequestSpecBuilder;
+//import io.restassured.builder.ResponseSpecBuilder;
+//import io.restassured.http.ContentType;
+//import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-
-
+import pojo.LoginRequest;
 import pojo.LoginResponse;
 import pojo.LoginTempData;
+import utils.ApiResources;
+import utils.TestDataBuild;
+import utils.utility;
 
-public class UserSteps {
+public class UserSteps extends utility{
 
-    // ✅ Class-level variables so all steps can access
     private RequestSpecification req;
     private ResponseSpecification resSpec;
+    RequestSpecification res ;
     private Response response;
+    private LoginRequest loginRequest;
+    String token1;
 
-    private String loginPayload =
-            "{"
-          + "\"userLoginEmailId\":\"team3@gmail.com\","
-          + "\"password\":\"ApiHackathon2@3\""
-          + "}";
+    TestDataBuild data = new TestDataBuild();
 
-    @Given("Admin create login request with valid credentials")
-    public void admin_create_login_request_with_valid_credentials() {
-
-        // Build request specification
-        req = new RequestSpecBuilder()
-                .setBaseUri("https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms")
-                .setContentType(ContentType.JSON)
-                .build();
-
-        // Build response specification
-        resSpec = new ResponseSpecBuilder()
-                .expectStatusCode(200)
-                .build();
+    @Given("Admin creates login request with {string} and {string}")
+    public void admin_creates_login_request_with_and(String email, String password) throws IOException {
+         
+        req = given().spec(requestspecification()).body(data.userloginPayload(email, password));
     }
-
-    @When("Admin calls POST method with valid endpoint")
-    public void admin_calls_post_method_with_valid_endpoint() {
-
-        // 🔥 Execute login API
-        response = given()
-                        .spec(req)
-                        .body(loginPayload)
-                   .when()
-                        .post("/login")
-                   .then()
-                        .spec(resSpec)
-                        .extract()
-                        .response();
-
-        // 🔐 Store token for next APIs
-        LoginResponse loginResp = response.as(LoginResponse.class);
-        LoginTempData.setToken(loginResp.getToken());
-        LoginTempData.setUserId(loginResp.getUserId());
-
-        System.out.println("Token captured: " + LoginTempData.getToken());
-    }
-
     
-    @Then("Admin receives {int} created with auto generated token")
-    public void admin_receives_created_with_auto_generated_token(Integer statusCode) {
+    @When("Admin calls {string} with {string} http request")
+    public void admin_calls_with_http_request(String resource, String method) {
+    	ApiResources resorceApi =ApiResources.valueOf(resource);
+    	System.out.println(resorceApi.getResorce());
+    	
+    	if(method.equalsIgnoreCase("POST"))
+    	     response = req.when().post(resorceApi.getResorce());
+    	else if(method.equalsIgnoreCase("GET"))
+    		response = req.when().get(resorceApi.getResorce());
+    		
+    }
+    	
+    @Then("Admin receives status code {int}")
+    public void admin_receives_status_code(Integer expectedStatusCode) {
+        
+        int actualStatusCode = response.getStatusCode();
         System.out.println("Actual Status Code: " + response.getStatusCode());
         System.out.println("Response Body: " + response.asString());
+        assert actualStatusCode == expectedStatusCode : "Expected" + expectedStatusCode + " but got" + actualStatusCode;
+     // ✅ Capture token ONLY when login succeeds
+        if (actualStatusCode == 200) {
+            LoginResponse loginResp = response.as(LoginResponse.class);
+            LoginTempData.setToken(loginResp.getToken());
+            LoginTempData.setUserId(loginResp.getUserId());
 
-        // ✅ JUnit 5 assertion
-//        assertEquals(statusCode.intValue(), response.getStatusCode());
+            System.out.println("Token captured: " + loginResp.getToken());
+        } else {
+            System.out.println("Login failed → Token not generated");
+        }
     }
+@Given("admin sets authorization to bearer Token with creates request")
+public void admin_sets_authorization_to_bearer_token_with_creates_request() throws IOException {
+	token1 = LoginTempData.getToken();
+	req = given()
+            .spec(requestspecification())
+            .header("Authorization", "Bearer " + token1);
+}
+@Then("Admin recieved {int} status code")
+public void admin_recieved_status_code(int expectedStatusCode) {
+	int actualStatusCodel = response.getStatusCode();
+    System.out.println("Actual Status Code: " + response.getStatusCode());
+    System.out.println("Response Body: " + response.asString());
+    assert actualStatusCodel == expectedStatusCode : "Expected" + expectedStatusCode + " but got" + actualStatusCodel;
 
 }
+    
+}	
