@@ -4,7 +4,10 @@ public enum ApiResources {
 
 	postLoginApi("/login"),
 	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
-	getLogoutlms("/logoutlms");
+	getLogoutlms("/logoutlms"),
+	getallUsers("/users");
+	
+	
 	private String resource;
 	
 	ApiResources(String resource)
