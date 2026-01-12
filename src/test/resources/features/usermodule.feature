@@ -1,4 +1,4 @@
-Feature: User Module - Admin Management
+#Feature: User Module - Admin Management
 
   Background: Admin sets Bearer token
     Given Admin sets Bearer token

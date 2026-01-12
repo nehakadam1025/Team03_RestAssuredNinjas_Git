@@ -1,0 +1,472 @@
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@gmail.com",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:21 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=qQjp6upIKKq0W1gGSNbj2MNAMatskoV4WoONS03khkw%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244661"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=qQjp6upIKKq0W1gGSNbj2MNAMatskoV4WoONS03khkw%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244661"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 334
+
+{
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZWFtM0BnbWFpbC5jb20iLCJpYXQiOjE3NjgyNDQ2NjEsImV4cCI6MTc2ODI3MzQ2MX0.kmg_KoBPopBb6RaxB7D_VNbigsyeHcYlysiWfonTcSpm3LGHmdHl6SO66XO1m-Sjs_u4bR_UrwhlIc_iepYy4g",
+    "type": "Bearer",
+    "userId": "U59",
+    "email": "team3@gmail.com",
+    "roles": [
+        "ROLE_ADMIN",
+        "ROLE_STAFF"
+    ],
+    "status": "Active",
+    "passwordExpired": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "&^%$$$$team3@gmail.com",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:21 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=BcoY9h9ypDKmrAn0%2BSLZbfZBewYNLpm6tHRGFOixHM0%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244662"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=BcoY9h9ypDKmrAn0%2BSLZbfZBewYNLpm6tHRGFOixHM0%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244662"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 71
+
+{
+    "message": "Active User with given email Id Not Found",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@gmail.com",
+    "password": "&^%$$$$ApiHackathon2@3"
+}
+HTTP/1.1 401 Unauthorized
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:23 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=j0%2BUPW%2FEUpJ2NMhnyCPwsPPWpRRJ508hlLxmESk57EM%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244663"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=j0%2BUPW%2FEUpJ2NMhnyCPwsPPWpRRJ508hlLxmESk57EM%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244663"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 45
+
+{
+    "message": "Bad credentials",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@hotmail.com.com",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:23 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=j0%2BUPW%2FEUpJ2NMhnyCPwsPPWpRRJ508hlLxmESk57EM%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244663"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=j0%2BUPW%2FEUpJ2NMhnyCPwsPPWpRRJ508hlLxmESk57EM%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244663"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 71
+
+{
+    "message": "Active User with given email Id Not Found",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "222222222222222",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:23 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=j0%2BUPW%2FEUpJ2NMhnyCPwsPPWpRRJ508hlLxmESk57EM%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244663"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=j0%2BUPW%2FEUpJ2NMhnyCPwsPPWpRRJ508hlLxmESk57EM%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244663"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 71
+
+{
+    "message": "Active User with given email Id Not Found",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@gmail.com",
+    "password": "222222222222222"
+}
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:23 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=QuvzR%2FsxDqV5oj9t5mKBdvcBrIz83QldfbCj%2Br4t1Mk%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244664"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=QuvzR%2FsxDqV5oj9t5mKBdvcBrIz83QldfbCj%2Br4t1Mk%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244664"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 160
+
+{
+    "message": "password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:24 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=QuvzR%2FsxDqV5oj9t5mKBdvcBrIz83QldfbCj%2Br4t1Mk%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244664"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=QuvzR%2FsxDqV5oj9t5mKBdvcBrIz83QldfbCj%2Br4t1Mk%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244664"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 50
+
+{
+    "message": "EmailId is mandatory",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@gmail.com",
+    "password": ""
+}
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:24 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=QuvzR%2FsxDqV5oj9t5mKBdvcBrIz83QldfbCj%2Br4t1Mk%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244664"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=QuvzR%2FsxDqV5oj9t5mKBdvcBrIz83QldfbCj%2Br4t1Mk%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244664"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 51
+
+{
+    "message": "Password is mandatory",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/loginnnnn
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@gmail.com",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 401 Unauthorized
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 0
+Date: Mon, 12 Jan 2026 19:04:24 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=%2FMio7gPIGWb1OhBGEf5b%2FShMLerazwsRM8YWjM5qQWc%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244665"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=%2FMio7gPIGWb1OhBGEf5b%2FShMLerazwsRM8YWjM5qQWc%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244665"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Request method:	GET
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userLoginEmailId": "team3@gmail.com",
+    "password": "ApiHackathon2@3"
+}
+HTTP/1.1 405 Method Not Allowed
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:25 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=%2FMio7gPIGWb1OhBGEf5b%2FShMLerazwsRM8YWjM5qQWc%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244665"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=%2FMio7gPIGWb1OhBGEf5b%2FShMLerazwsRM8YWjM5qQWc%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244665"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 67
+
+{
+    "message": "Request method 'GET' is not supported",
+    "success": false
+}
+Request method:	POST
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 400 Bad Request
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json
+Date: Mon, 12 Jan 2026 19:04:25 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=%2FMio7gPIGWb1OhBGEf5b%2FShMLerazwsRM8YWjM5qQWc%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244665"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=%2FMio7gPIGWb1OhBGEf5b%2FShMLerazwsRM8YWjM5qQWc%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244665"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+Content-Length: 239
+
+{
+    "message": "Required request body is missing: public org.springframework.http.ResponseEntity<com.numpyninja.lms.dto.JwtResponseDto> com.numpyninja.lms.controller.UserLoginController.signin(com.numpyninja.lms.dto.LoginDto)",
+    "success": false
+}
+Request method:	GET
+Request URI:	https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms/logoutlms
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZWFtM0BnbWFpbC5jb20iLCJpYXQiOjE3NjgyNDQ2NjEsImV4cCI6MTc2ODI3MzQ2MX0.kmg_KoBPopBb6RaxB7D_VNbigsyeHcYlysiWfonTcSpm3LGHmdHl6SO66XO1m-Sjs_u4bR_UrwhlIc_iepYy4g
+				Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 17
+Content-Type: text/plain;charset=UTF-8
+Date: Mon, 12 Jan 2026 19:04:25 GMT
+Expires: 0
+Nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+Pragma: no-cache
+Report-To: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=%2B3zGAq7gQ54k327V9gdhESyvzvyY6GlinM0Rdf2v5OE%3D\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\u0026ts=1768244666"}],"max_age":3600}
+Reporting-Endpoints: heroku-nel="https://nel.heroku.com/reports?s=%2B3zGAq7gQ54k327V9gdhESyvzvyY6GlinM0Rdf2v5OE%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1768244666"
+Server: Heroku
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Via: 1.1 heroku-router
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 0
+
+Logout successful

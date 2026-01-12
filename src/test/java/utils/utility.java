@@ -3,6 +3,7 @@ package utils;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Properties;
 
@@ -54,15 +55,31 @@ public class utility {
                
     }
     
-    public String getGlobalValue(String key) throws IOException
-    {
-    	Properties prop = new Properties();
-    	FileInputStream fis = new FileInputStream("C:\\Users\\Home\\eclipsenew\\Team3_RestAssuredNinjas\\src\\test\\resources\\config.properties");
-        prop.load(fis);
+//    public String getGlobalValue(String key) throws IOException
+//    {
+//    	Properties prop = new Properties();
+//    	FileInputStream fis = new FileInputStream("C:\\Users\\Home\\eclipsenew\\Team3_RestAssuredNinjas\\src\\test\\resources\\config.properties");
+//        prop.load(fis);
+//        return prop.getProperty(key);
+//        //return prop;
+//    }
+    public String getGlobalValue(String key) throws IOException {
+        Properties prop = new Properties();
+
+        try (InputStream fis = getClass()
+                .getClassLoader()
+                .getResourceAsStream("config.properties")) {
+
+            if (fis == null) {
+                throw new RuntimeException("config.properties not found in classpath");
+            }
+
+            prop.load(fis);
+        }
+
         return prop.getProperty(key);
-        //return prop;
     }
-    
+
     public String getJsonPath(Response response, String key)
     {
     	String resp = response.asString();

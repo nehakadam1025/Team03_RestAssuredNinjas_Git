@@ -85,5 +85,28 @@ public void admin_recieved_status_code(int expectedStatusCode) {
     assert actualStatusCodel == expectedStatusCode : "Expected" + expectedStatusCode + " but got" + actualStatusCodel;
 
 }
+
+@Given("Admin creates login request with Null body")
+public void admin_creates_login_request_with_null_body() throws IOException {
+	req = given().spec(requestspecification());
+}
+
+//@Given("Admist getting skill master request")
+//public void admist_getting_skill_master_request() {
+//	System.out.println(" am skillmaster method");
+// 
+//}
+//@When("Admin calls http request for skill")
+//public void admin_calls_http_request_for_skill() {
+//    // Write code here that turns the phrase above into concrete actions
+//    throw new io.cucumber.java.PendingException();
+//}
+//@Then("Admin recieved hdjsdl status code")
+//public void admin_recieved_hdjsdl_status_code() {
+//    // Write code here that turns the phrase above into concrete actions
+//    throw new io.cucumber.java.PendingException();
+//}
+
+
     
 }	

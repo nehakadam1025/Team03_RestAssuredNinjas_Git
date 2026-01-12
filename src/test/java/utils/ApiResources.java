@@ -3,6 +3,7 @@ package utils;
 public enum ApiResources {
 
 	postLoginApi("/login"),
+	postLoginWrongEndPoint("/loginnnnn"),
 	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
 	getLogoutlms("/logoutlms"),
 	getallUsers("/users");
