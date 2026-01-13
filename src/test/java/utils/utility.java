@@ -1,6 +1,6 @@
 package utils;
 
-import java.io.FileInputStream;
+//import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Properties;
 
-import io.restassured.RestAssured;
+//import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;

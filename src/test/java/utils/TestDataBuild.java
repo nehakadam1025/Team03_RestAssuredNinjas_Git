@@ -40,7 +40,7 @@ public class TestDataBuild {
 
         // Login info
         UserLogin login = new UserLogin();
-        login.setUserLoginEmail("Rinarrh@gmail.com");
+        login.setUserLoginEmail("RinarAC@gmail.com");
         login.setLoginStatus("Active");
         login.setStatus("Active");
 
@@ -49,12 +49,12 @@ public class TestDataBuild {
         user.setUserComments("APHackathons");
         user.setUserEduPg("Msc");
         user.setUserEduUg("Bsc");
-        user.setUserFirstName("Rinarrh");
-        user.setUserLastName("Rinarrh");
-        user.setUserLinkedinUrl("https://www.linkedin.com/Rinarrh");
+        user.setUserFirstName("RinarAC");
+        user.setUserLastName("RinarAC");
+        user.setUserLinkedinUrl("https://www.linkedin.com/RinarAC");
         user.setUserLocation("USA");
         user.setUserMiddleName("Rajan");
-        user.setUserPhoneNumber("+91 9934567898");
+        user.setUserPhoneNumber("+91 9934567811");
         user.setUserTimeZone("EST");
         user.setUserVisaStatus("H1B");
         user.setUserRoleMaps(Collections.singletonList(roleMap));
