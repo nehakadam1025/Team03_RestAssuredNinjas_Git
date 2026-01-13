@@ -6,7 +6,9 @@ public enum ApiResources {
 	postLoginWrongEndPoint("/loginnnnn"),
 	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
 	getLogoutlms("/logoutlms"),
-	getallUsers("/users");
+	getallUsers("/users"),
+	getall("/allSkillMaster"),
+	createUser("/users/roleStatus");
 	
 	
 	private String resource;

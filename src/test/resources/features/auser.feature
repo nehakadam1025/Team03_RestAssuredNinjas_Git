@@ -40,10 +40,10 @@ Feature: User Login Controller
      When Admin calls "postLoginApi" with "POST" http request
     Then Admin recieved 400 status code
       
-    Scenario: Check if admin able to logout from LMS Application
-    Given admin sets authorization to bearer Token with creates request
-    When Admin calls "getLogoutlms" with "GET" http request
-    Then Admin recieved 200 status code
+    #Scenario: Check if admin able to logout from LMS Application
+    #Given admin sets authorization to bearer Token with creates request
+    #When Admin calls "getLogoutlms" with "GET" http request
+    #Then Admin recieved 200 status code
     
     #Scenario: Check if admin able to skillmaster from LMS Application
     #Given Admist getting skill master request

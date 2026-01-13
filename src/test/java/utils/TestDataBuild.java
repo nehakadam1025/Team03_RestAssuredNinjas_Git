@@ -1,6 +1,11 @@
 package utils;
 
+import java.util.Collections;
+
 import pojo.LoginRequest;
+import pojo.UserLogin;
+import pojo.UserRequest;
+import pojo.UserRoleMap;
 
 public class TestDataBuild {
 
@@ -18,5 +23,38 @@ public class TestDataBuild {
         p.setUserLoginEmailId(email);
         p.setPassword(password);
         return p;
+    }
+    
+    // 🔹 CREATE USER / ADMIN PAYLOAD (NEW)
+    public UserRequest createUserPayload() {
+
+        // Role mapping
+        UserRoleMap roleMap = new UserRoleMap();
+        roleMap.setRoleId("R01");
+        roleMap.setUserRoleStatus("Active");
+
+        // Login info
+        UserLogin login = new UserLogin();
+        login.setUserLoginEmail("RinarrE@gmail.com");
+        login.setLoginStatus("Active");
+        login.setStatus("Active");
+
+        // Main user payload
+        UserRequest user = new UserRequest();
+        user.setUserComments("APHackathons");
+        user.setUserEduPg("Msc");
+        user.setUserEduUg("Bsc");
+        user.setUserFirstName("RinarrE");
+        user.setUserLastName("RinarrE");
+        user.setUserLinkedinUrl("https://www.linkedin.com/RinarrE");
+        user.setUserLocation("USA");
+        user.setUserMiddleName("Rajan");
+        user.setUserPhoneNumber("+91 9934567892");
+        user.setUserTimeZone("EST");
+        user.setUserVisaStatus("H1B");
+        user.setUserRoleMaps(Collections.singletonList(roleMap));
+        user.setUserLogin(login);
+
+        return user;
     }
 }
