@@ -5,7 +5,11 @@ public enum ApiResources {
 	postLoginApi("/login"),
 	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
 	getLogoutlms("/logoutlms"),
-	getallUsers("/users");
+	getallUsers("/users"),
+	postLoginWrongEndPoint("/loginnnnn"),
+	getall("/allSkillMaster"),
+	createUser("/users/roleStatus"),
+	getaaprgram("/allPrograms");
 	
 	
 	private String resource;
