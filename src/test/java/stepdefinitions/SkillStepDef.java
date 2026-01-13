@@ -17,7 +17,7 @@ import pojo.LoginTempData;
 
 public class SkillStepDef extends utility {
 
-    private RequestSpecification req;
+    private RequestSpecification req2;
     private Response response;
 
     @Given("Admin creates GET Request for the LMS API endpoint")
@@ -25,7 +25,7 @@ public class SkillStepDef extends utility {
 
         String token = LoginTempData.getToken(); // token from login feature
 
-        req = given()
+        req2 = given()
                 .spec(requestspecification())
                 .header("Authorization", "Bearer " + token);
     }
@@ -36,7 +36,7 @@ public class SkillStepDef extends utility {
         ApiResources resourceAPI = ApiResources.valueOf(resource);
 
         if (method.equalsIgnoreCase("GET")) {
-            response = req.when().get(resourceAPI.getResorce());
+            response = req2.when().get(resourceAPI.getResorce());
         }
     }
 

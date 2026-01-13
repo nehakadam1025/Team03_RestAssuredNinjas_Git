@@ -7,5 +7,5 @@
     
     #Scenario: Check if admin able to get Skill Master Name with valid endpoint 
     #Given Admin able to get Skill Master Name with valid endpoint
-    #When Admin calls "getall" with "GET" http request for skill master
+    #When Admin calls "getSkillMaster" with "GET" http request for skill master
     #Then Admin receives 200 Status

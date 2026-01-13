@@ -8,7 +8,8 @@ public enum ApiResources {
 	getLogoutlms("/logoutlms"),
 	getallUsers("/users"),
 	getall("/allSkillMaster"),
-	createUser("/users/roleStatus");
+	createUser("/users/roleStatus"),
+	getaaprgram("/allPrograms");
 	
 	
 	private String resource;
