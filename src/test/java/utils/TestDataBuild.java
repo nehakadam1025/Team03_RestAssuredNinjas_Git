@@ -1,10 +1,9 @@
 package utils;
 
 
-import pojo.LoginRequest;
-
 import java.util.Collections;
 
+import pojo.LoginRequest;
 //import pojo.LoginRequest;
 import pojo.UserLogin;
 import pojo.UserRequest;
@@ -40,7 +39,7 @@ public class TestDataBuild {
 
         // Login info
         UserLogin login = new UserLogin();
-        login.setUserLoginEmail("Rinarrh@gmail.com");
+        login.setUserLoginEmail("Rinarrp@gmail.com");
         login.setLoginStatus("Active");
         login.setStatus("Active");
 
@@ -49,12 +48,12 @@ public class TestDataBuild {
         user.setUserComments("APHackathons");
         user.setUserEduPg("Msc");
         user.setUserEduUg("Bsc");
-        user.setUserFirstName("Rinarrh");
-        user.setUserLastName("Rinarrh");
-        user.setUserLinkedinUrl("https://www.linkedin.com/Rinarrh");
+        user.setUserFirstName("Rinarrp");
+        user.setUserLastName("Rinarrp");
+        user.setUserLinkedinUrl("https://www.linkedin.com/Rinarrp");
         user.setUserLocation("USA");
         user.setUserMiddleName("Rajan");
-        user.setUserPhoneNumber("+91 9934567898");
+        user.setUserPhoneNumber("+91 9624417678");
         user.setUserTimeZone("EST");
         user.setUserVisaStatus("H1B");
         user.setUserRoleMaps(Collections.singletonList(roleMap));

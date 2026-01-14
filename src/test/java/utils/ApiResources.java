@@ -6,6 +6,7 @@ public enum ApiResources {
 	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
 	getLogoutlms("/logoutlms"),
 	getallUsers("/users"),
+	getbyid("/users/U74"),
 	postLoginWrongEndPoint("/loginnnnn"),
 	getall("/allSkillMaster"),
 	createUser("/users/roleStatus"),
