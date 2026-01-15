@@ -1,2 +1,0 @@
-2026-01-14 22:54:08 [main] INFO  stepdefinitions.UserSteps - Login request created for email: { "userLoginEmailId": "team3@gmail.com", "password": "ApiHackathon2@3" }
-2026-01-14 22:54:08 [main] INFO  utils.utility - Request specification created with custom baseUrl: https://lms-hackathon.herokuapp.com/lms

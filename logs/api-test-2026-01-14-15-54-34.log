@@ -1,2 +1,0 @@
-2026-01-14 15:54:34 [main] INFO  utils.utility - Request specification created with baseUrl: https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms
-2026-01-14 15:54:34 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com

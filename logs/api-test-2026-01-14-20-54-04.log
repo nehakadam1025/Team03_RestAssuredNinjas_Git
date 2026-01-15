@@ -1,3 +1,0 @@
-2026-01-14 20:54:04 [main] INFO  stepdefinitions.UserSteps - Expected Status: 200, Actual Status: 200
-2026-01-14 20:54:04 [main] INFO  stepdefinitions.UserSteps - Login request created for email: &^%$$$$team3@gmail.com
-2026-01-14 20:54:04 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com

@@ -1,2 +1,0 @@
-2026-01-14 22:20:04 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
-2026-01-14 22:20:04 [main] INFO  stepdefinitions.UserSteps - Login request created for email: { "userLoginEmailId": "team3@gmail.com", "password": "ApiHackathon2@3" }
