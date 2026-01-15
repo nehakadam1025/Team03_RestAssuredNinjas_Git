@@ -3,11 +3,16 @@ package utils;
 public enum ApiResources {
 
 	postLoginApi("/login"),
-	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
-	getLogoutlms("/logoutlms"),
-	getallUsers("/users"),
 	postLoginWrongEndPoint("/loginnnnn"),
-	getall("/allSkillMaster"),
+	postforgotPasswordConfirmEmail("/login/forgotpassword/confirmEmail"),
+	postforgotPasswordConfirmEmailWrongEndpoint("/login/forgotpassword/confirmEmailhhghh"),
+	postresetPassword("/resetPassword"),
+	postresetPasswordWrongEndpoint("/resetPassworddddd"),
+	getLogoutlms("/logoutlms"),
+	getLogoutlmswrongEndPoint("/logoutlmssssss"),
+	getallUsers("/users"),
+	getallSkillMaster("/allSkillMaster"),
+	getSkillName("/skills"),
 	createUser("/users/roleStatus"),
 	getaaprgram("/allPrograms");
 	

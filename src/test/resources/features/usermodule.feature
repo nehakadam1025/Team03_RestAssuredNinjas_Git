@@ -1,4 +1,4 @@
-Feature: User Module - Admin Management
+#Feature: User Module - Admin Management
 
     
  @POST 

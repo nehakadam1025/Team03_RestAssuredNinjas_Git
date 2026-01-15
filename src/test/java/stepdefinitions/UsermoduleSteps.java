@@ -27,6 +27,7 @@ import java.io.IOException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojo.LoginTempData;
@@ -36,7 +37,7 @@ import utils.utility;
 
 public class UsermoduleSteps extends utility {
 	
-	private RequestSpecification req;
+	private RequestSpecification req3;
     private Response response;
 
     TestDataBuild data1 = new TestDataBuild();
@@ -74,25 +75,24 @@ public class UsermoduleSteps extends utility {
 //	        req = given()
 //	                .spec(requestspecification())
 //	                .header("Authorization", "Bearer " + token).body(data.createUserPayload());
-		String token = LoginTempData.getToken();
+		String token = LoginTempData.getToken(); // token from login feature
 
-	    req = given()
-	            .spec(requestspecification())
-	            .header("Authorization", "Bearer " + token)
-	            .body(data1.createUserPayload());
-
-//	   
+        req3 = given()
+        		.spec(requestspecification())
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+	            .body(data1.createUserPayload());  
 	}
 
 	@When("Admin calls {string} with {string} http request for user admin")
-	public void admin_calls_with_https_request_for_user_admin(String resource, String method) {
-		
-		 ApiResources resourceAPI = ApiResources.valueOf(resource);
+	public void admin_calls_with_http_request_for_user_admin(String resource, String method) {
+		ApiResources resourceAPI = ApiResources.valueOf(resource);
 
-	        if (method.equalsIgnoreCase("POST")) {
-	            response = req.when().post(resourceAPI.getResorce());
-	        }
-	    
+		if (method.equalsIgnoreCase("POST")) {
+            response = req3.when().post(resourceAPI.getResorce());
+        } else if (method.equalsIgnoreCase("GET")) {
+            response = req3.when().get(resourceAPI.getResorce());
+        }
 	}
 	@Then("Admin receives {int} Created Status with response body")
 	public void admin_receives_created_status_with_response_body(Integer expectedStatus) {
@@ -103,4 +103,6 @@ public class UsermoduleSteps extends utility {
         assert actualStatus == expectedStatus :
                 "Expected " + expectedStatus + " but got " + actualStatus;
 	}
+	
+
 }

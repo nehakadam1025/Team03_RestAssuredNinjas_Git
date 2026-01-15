@@ -1,6 +1,7 @@
 package utils;
 
 
+import pojo.ConfirmEmailRequest;
 import pojo.LoginRequest;
 
 import java.util.Collections;
@@ -28,6 +29,15 @@ public class TestDataBuild {
         p.setPassword(password);
         return p;
     }
+    
+    // ✅ NEW: Confirm Email payload
+    public ConfirmEmailRequest confirmEmailPayload(String emailId) {
+
+        ConfirmEmailRequest cpasswordloginrequest = new ConfirmEmailRequest();
+        cpasswordloginrequest.setUserLoginEmailId(emailId);
+        return cpasswordloginrequest;
+    }
+
 
     
     // 🔹 CREATE USER / ADMIN PAYLOAD (NEW)
@@ -40,7 +50,7 @@ public class TestDataBuild {
 
         // Login info
         UserLogin login = new UserLogin();
-        login.setUserLoginEmail("RinarAC@gmail.com");
+        login.setUserLoginEmail("RinarAf@gmail.com");
         login.setLoginStatus("Active");
         login.setStatus("Active");
 
@@ -49,12 +59,12 @@ public class TestDataBuild {
         user.setUserComments("APHackathons");
         user.setUserEduPg("Msc");
         user.setUserEduUg("Bsc");
-        user.setUserFirstName("RinarAC");
-        user.setUserLastName("RinarAC");
-        user.setUserLinkedinUrl("https://www.linkedin.com/RinarAC");
+        user.setUserFirstName("RinarAf");
+        user.setUserLastName("RinarAf");
+        user.setUserLinkedinUrl("https://www.linkedin.com/RinarAf");
         user.setUserLocation("USA");
         user.setUserMiddleName("Rajan");
-        user.setUserPhoneNumber("+91 9934567811");
+        user.setUserPhoneNumber("+91 9934567815");
         user.setUserTimeZone("EST");
         user.setUserVisaStatus("H1B");
         user.setUserRoleMaps(Collections.singletonList(roleMap));

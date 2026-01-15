@@ -1,0 +1,1 @@
+{"uuid":"06a1d303-b3ca-4ad9-bdec-678fa9bf47a9","name":"Scenario: POST/resetPassword Check if admin able to resetPassword with invalid content type","children":["3c15cc4b-7fae-462f-bbfd-eb81fe4a931f"],"befores":[],"afters":[],"start":1768419992691,"stop":1768419993043}

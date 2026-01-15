@@ -1,0 +1,42 @@
+2026-01-14 12:36:15 [main] INFO  utils.utility - Request specification created with baseUrl: https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms
+2026-01-14 12:36:15 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 12:36:17 [main] INFO  stepdefinitions.UserSteps - Expected Status: 200, Actual Status: 200
+2026-01-14 12:36:17 [main] INFO  stepdefinitions.UserSteps - Login request created for email: &^%$$$$team3@gmail.com
+2026-01-14 12:36:18 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 12:36:18 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@hotmail.com.com
+2026-01-14 12:36:18 [main] INFO  stepdefinitions.UserSteps - Login request created for email: 222222222222222
+2026-01-14 12:36:19 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 12:36:19 [main] INFO  stepdefinitions.UserSteps - Login request created for email: 
+2026-01-14 12:36:19 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 12:36:19 [main] INFO  stepdefinitions.UserSteps - Login request created for email: { "userLoginEmailId": "team3@gmail.com", "password": "ApiHackathon2@3" }
+2026-01-14 12:36:20 [main] INFO  utils.utility - Request specification created with custom baseUrl: https://lms-hackathon.herokuapp.com/lms
+2026-01-14 12:36:20 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 12:36:21 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:31:14 [main] INFO  utils.utility - Request specification created with baseUrl: https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms
+2026-01-14 13:31:14 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:31:16 [main] INFO  stepdefinitions.UserSteps - Expected Status: 200, Actual Status: 200
+2026-01-14 13:31:16 [main] INFO  stepdefinitions.UserSteps - Login request created for email: &^%$$$$team3@gmail.com
+2026-01-14 13:31:17 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:31:17 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@hotmail.com.com
+2026-01-14 13:31:17 [main] INFO  stepdefinitions.UserSteps - Login request created for email: 222222222222222
+2026-01-14 13:31:18 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:31:18 [main] INFO  stepdefinitions.UserSteps - Login request created for email: 
+2026-01-14 13:31:18 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:31:19 [main] INFO  stepdefinitions.UserSteps - Login request created for email: { "userLoginEmailId": "team3@gmail.com", "password": "ApiHackathon2@3" }
+2026-01-14 13:31:19 [main] INFO  utils.utility - Request specification created with custom baseUrl: https://lms-hackathon.herokuapp.com/lms
+2026-01-14 13:31:20 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:31:20 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:38:01 [main] INFO  utils.utility - Request specification created with baseUrl: https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms
+2026-01-14 13:38:01 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:38:03 [main] INFO  stepdefinitions.UserSteps - Expected Status: 200, Actual Status: 200
+2026-01-14 13:38:03 [main] INFO  stepdefinitions.UserSteps - Login request created for email: &^%$$$$team3@gmail.com
+2026-01-14 13:38:04 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:38:04 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@hotmail.com.com
+2026-01-14 13:38:05 [main] INFO  stepdefinitions.UserSteps - Login request created for email: 222222222222222
+2026-01-14 13:38:05 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:38:05 [main] INFO  stepdefinitions.UserSteps - Login request created for email: 
+2026-01-14 13:38:06 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:38:06 [main] INFO  stepdefinitions.UserSteps - Login request created for email: { "userLoginEmailId": "team3@gmail.com", "password": "ApiHackathon2@3" }
+2026-01-14 13:38:06 [main] INFO  utils.utility - Request specification created with custom baseUrl: https://lms-hackathon.herokuapp.com/lms
+2026-01-14 13:38:07 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
+2026-01-14 13:38:08 [main] INFO  stepdefinitions.UserSteps - Login request created for email: team3@gmail.com
