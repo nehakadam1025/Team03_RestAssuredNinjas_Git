@@ -1,20 +1,21 @@
 package stepdefinitions;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import pojo.LoginTempData;
+import pojo.LoginTempData;  // ✅ Make sure this import is correct
 import utils.ApiResources;
 import utils.ExcelUtils;
 import utils.TestDataBuild;
-import utils.utility;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import utils.utility;  // ✅
+
 
 public class userloginexcelSteps extends utility {
 	
@@ -72,7 +73,7 @@ public class userloginexcelSteps extends utility {
 
     	    assertEquals(expectedStatus, actualStatus,
     	            "Status code mismatch");
-    	    if (actualStatus == 200) {
+    	    /*if (actualStatus == 200) {
     	        String token = response.jsonPath().getString("token");
     	        String userId = response.jsonPath().getString("userId");
 
@@ -81,8 +82,24 @@ public class userloginexcelSteps extends utility {
 
     	        System.out.println("✅ Token stored successfully");
     	        System.out.println("✅ UserId stored: " + userId);
-    	    }
+    	    }*/
+    	    if (actualStatus == 200) {
+    	        String token = response.jsonPath().getString("token");
+    	        String userId = response.jsonPath().getString("userId");
+
+    	        if (token != null) {
+    	            LoginTempData.setToken(token);
+    	            System.out.println("✅ Token stored successfully: " + token);
+    	        } else {
+    	            System.out.println("❌ ERROR: Token is NULL in response!");
+    	        }
+
+    	        if (userId != null) {
+    	            LoginTempData.setUserId(userId);
+    	            System.out.println("✅ UserId stored: " + userId);
+    	        }
     
         
-}
+    	    }
+    }
 }

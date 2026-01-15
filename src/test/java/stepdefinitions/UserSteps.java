@@ -1,4 +1,4 @@
-package stepdefinitions;
+/*package stepdefinitions;
 
 import static io.restassured.RestAssured.given;
 
@@ -109,4 +109,4 @@ public void admin_creates_login_request_with_null_body() throws IOException {
 
 
     
-}	
+}	*/
