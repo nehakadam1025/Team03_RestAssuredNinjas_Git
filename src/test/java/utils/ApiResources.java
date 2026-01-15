@@ -20,7 +20,7 @@ public enum ApiResources {
 	getallSkillMaster("/allSkillMaster"),
 	getSkillName("/skills"),
 	getaaprgram("/allPrograms");
-	
+
 	
 	private String resource;
 	

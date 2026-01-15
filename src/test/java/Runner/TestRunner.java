@@ -22,4 +22,5 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
                // "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 )
 public class TestRunner {
+	
 }

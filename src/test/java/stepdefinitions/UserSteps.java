@@ -1,8 +1,41 @@
-package stepdefinitions;
+//package stepdefinitions;
+//import static io.restassured.RestAssured.given;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//import java.io.IOException;
+//import java.util.Map;
+//
+//import io.cucumber.java.en.Given;
+//import io.cucumber.java.en.When;
+//import io.cucumber.java.en.Then;
+//import io.restassured.http.ContentType;
+//import io.restassured.response.Response;
+//import io.restassured.specification.RequestSpecification;
+//import pojo.LoginResponse;
+//import pojo.LoginTempData;
+//import utils.ApiResources;
+//import utils.GlobalTestData;
+//import utils.TestDataBuild;
+//import utils.utility;
+//public class UserSteps extends utility {
+//    // :white_check_mark: NOT static
+//    private RequestSpecification req;
+//    private Response response;
+//    String token1;
+//    TestDataBuild data = new TestDataBuild();
+//    private static final Logger log = LogManager.getLogger(UserSteps.class);
+    // ---------------- LOGIN ----------------
+ package stepdefinitions;
+
 import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.io.IOException;
+
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -12,16 +45,56 @@ import io.restassured.specification.RequestSpecification;
 import pojo.LoginResponse;
 import pojo.LoginTempData;
 import utils.ApiResources;
+import utils.GlobalTestData;
 import utils.TestDataBuild;
 import utils.utility;
+
 public class UserSteps extends utility {
-    // :white_check_mark: NOT static
-    private RequestSpecification req;
-    private Response response;
-    String token1;
-    TestDataBuild data = new TestDataBuild();
-    private static final Logger log = LogManager.getLogger(UserSteps.class);
-    // ---------------- LOGIN ----------------
+// :white_check_mark: NOT static
+private RequestSpecification req;
+private Response response;
+String token1;
+TestDataBuild data = new TestDataBuild();
+private static final Logger log = LogManager.getLogger(UserSteps.class);
+ //---------------- LOGIN ----------------
+
+
+        String filePath = "src/test/resources/testdata/TestData.xlsx";
+        String sheetName = "postLogin";
+
+       
+    @Given("Admin performs login test for Excel row {string}")
+    public void admin_performs_login_test_for_excel_row(String rowNumber) throws IOException {
+    	GlobalTestData.getInstance().loadExcelData(filePath, sheetName);
+
+//
+//    	    // Load Excel data globally once
+//    	    String filePath = "src/test/resources/testdata/TestData.xlsx";
+//    	    String sheetName = "postLogin";
+//    	    GlobalTestData.getInstance().loadExcelData(filePath, sheetName);
+
+    	    // Get row data by TestcaseId / rowNumber
+    	    Map<String, String> row = GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
+    	    if (row == null) {
+    	        throw new RuntimeException("No Excel data found for row: " + rowNumber);
+    	    }
+
+    	    // Extract email and password dynamically from Excel
+    	    String email = row.getOrDefault("email", "").trim();
+    	    String password = row.getOrDefault("password", "").trim();
+
+
+    	    // Create login request dynamically (using your existing method)
+    	    req = given()
+    	            .spec(requestspecification())
+    	            .contentType(ContentType.JSON)
+    	            .accept(ContentType.JSON)
+    	            .body(data.userloginPayload(email, password));
+
+    	    log.info("Login request created for Excel row {} | Email: {}",req, rowNumber);
+    	
+
+    }
     @Given("Admin creates login request with {string} and {string}")
     public void admin_creates_login_request_with_and(String email, String password) throws IOException {
         req = given()
@@ -40,7 +113,7 @@ public class UserSteps extends utility {
                 .contentType("text/plain")
                 .accept(ContentType.JSON)
                 .body(plainTextBody);
-        log.info("Login request created for email: {}", plainTextBody);
+        log.info("Login request created for email: {}", req);
     }
     @Given("Admin creates login request with Null body")
     public void admin_creates_login_request_with_null_body() throws IOException {
@@ -50,16 +123,57 @@ public class UserSteps extends utility {
                 .accept(ContentType.JSON)
                 .body("");
     }
-    // ---------------- INVALID BASE URL ----------------
+//    // ---------------- INVALID BASE URL ----------------
     @Given("Admin creates login request with {string} and {string} invalid baseurl")
-    public void admin_creates_login_request_with_and_invalid_baseurl(
-            String email,
-            String password) throws IOException {
+    public void admin_creates_login_request_with_and_invalid_baseurl(String email,String password) throws IOException {
     	req = given()
     	        .spec(requestspecificationWithBaseUrl(
     	                getGlobalValue("baseUrl.wrongbaseUrl")))
     	        .body(data.userloginPayload(email, password));
+    	log.info("Request data", req);
     }
+    
+ // ---------------------------------------------------
+    // LOGIN using Excel row number (normal or invalid endpoint)
+    // ---------------------------------------------------
+    @Given("Admin performs login test for Excel row {string} for invalid endpoint")
+    public void admin_performs_login_test_for_excel_row_for_invalid_endpoint(String rowNumber) throws IOException {
+
+       
+        Map<String, String> row =
+                GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
+
+        if (row == null) {
+            throw new RuntimeException("No Excel data found for row: " + rowNumber);
+        }
+
+        String email = row.getOrDefault("email", "").trim();
+        String password = row.getOrDefault("password", "").trim();
+
+        req = given()
+                .spec(requestspecification())
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(data.userloginPayload(email, password));
+
+        log.info("Login request created | Row: {} | Email: {}", rowNumber, email, password);
+    }
+    
+    @Given("Admin creates login request with invalid method")
+    public void admin_creates_login_request_with_invalid_method() throws IOException {
+    	
+   	 String plainTextBody = "{\r\n"
+ 		+ "  \"userLoginEmailId\": \"team3@gmail.com\"\r\n"
+ 		+ "}\r\n"
+ 		+ "      ";
+ req = given()
+         .spec(requestspecification())
+         .contentType("text/plain")   // force plain text
+         .accept(ContentType.JSON)
+         .body(plainTextBody);        // STRING body
+       
+    }
+
     // ---------------- FORGOT PASSWORD CONFIRM EMAIL ----------------
     @Given("Admin creates request with valid email {string}")
     public void admin_creates_request_with_valid_email(String emailId) throws IOException {
@@ -73,6 +187,27 @@ public class UserSteps extends utility {
         		.contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .body(data.confirmEmailPayload(emailId));
+    }
+    
+    @Given("Admin performs forgot password confirm email test for Excel row {string}")
+    public void admin_performs_forgot_password_confirm_email_test_for_excel_row(String rowNumber) throws IOException {
+
+        Map<String, String> row =
+                GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
+
+        if (row == null) {
+            throw new RuntimeException("No Excel data found for row: " + rowNumber);
+        }
+
+        String email = row.getOrDefault("email", "").trim();
+
+        req = given()
+                .spec(requestspecification())
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(data.confirmEmailPayload(email));
+
+        log.info("Forgot password confirm email request created | Row: {} | Email: {}", rowNumber, email);
     }
     @Given("Admin creates login request with invalid content type for forgotPassword")
     public void admin_creates_login_request_with_invalid_content_type_for_forgot_password() throws IOException {
@@ -102,7 +237,7 @@ public class UserSteps extends utility {
     		        .accept(ContentType.JSON)
          		.body("");
     }
-    //----------------------resetPassword---------------------/
+//    //----------------------resetPassword---------------------/
     @Given("Admin creates login request with {string} and {string} for resetPassword")
     public void admin_creates_login_request_with_and_for_reset_password(String email, String password) throws IOException {
     	token1 = LoginTempData.getToken();
@@ -112,6 +247,30 @@ public class UserSteps extends utility {
     	        .accept(ContentType.JSON)
                 .header("Authorization", "Bearer " + token1)
                 .body(data.userloginPayload(email, password));
+    }
+    
+    @Given("Admin performs resetPassword test {string}")
+    public void admin_performs_reset_password_test(String rowNumber) throws IOException {
+    	 Map<String, String> row =
+                 GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
+
+         if (row == null) {
+             throw new RuntimeException("No Excel data found for row: " + rowNumber);
+         }
+
+         String email = row.getOrDefault("email", "").trim();
+         String password = row.getOrDefault("password", "").trim();
+
+         req = given()
+                 .spec(requestspecification())
+                 .contentType(ContentType.JSON)
+                 .accept(ContentType.JSON)
+                 .header("Authorization", "Bearer " + token1)
+                 .body(data.userloginPayload(email, password));
+         
+         
+         log.info("resetPassword | Row: {} | Email: {} | PWD :{}", rowNumber, email, password);
+
     }
     @Given("Admin creates login request with invalid content type for resetPassword")
     public void admin_creates_login_request_with_invalid_content_type_for_reset_password() throws IOException {
@@ -126,14 +285,14 @@ public class UserSteps extends utility {
                 .accept(ContentType.JSON)
                 .body(plainTextBody);        // STRING body
     }
-    //----------------------logoutlms........................./
-//    @Given("admin sets authorization to bearer Token with creates request")
-//    public void admin_sets_authorization_to_bearer_token_with_creates_request() throws IOException {
-//    	token1 = LoginTempData.getToken();
-//    	req = given()
-//                .spec(requestspecification())
-//                .header("Authorization", "Bearer " + token1);
-//    }
+//    //----------------------logoutlms........................./
+////    @Given("admin sets authorization to bearer Token with creates request")
+////    public void admin_sets_authorization_to_bearer_token_with_creates_request() throws IOException {
+////    	token1 = LoginTempData.getToken();
+////    	req = given()
+////                .spec(requestspecification())
+////                .header("Authorization", "Bearer " + token1);
+////    }
     @Given("Admin creates request with invalid method")
     public void admin_creates_request_with_invalid_method() throws IOException {
     	token1 = LoginTempData.getToken();
@@ -179,7 +338,7 @@ public class UserSteps extends utility {
             response = req.when().get(resourceAPI.getResorce());
         }
     }
-    // ---------------- STATUS ASSERTION ----------------
+//     ---------------- STATUS ASSERTION ----------------
     @Then("Admin receives status code {int}")
     public void admin_receives_status_code(Integer expectedStatusCode) {
         int actualStatusCode = response.getStatusCode();
@@ -191,7 +350,7 @@ public class UserSteps extends utility {
         if (actualStatusCode == 200 && response.asString().contains("token")) {
             LoginResponse loginResp = response.as(LoginResponse.class);
             LoginTempData.setToken(loginResp.getToken());
-            LoginTempData.setUserId(loginResp.getUserId());
+          //  LoginTempData.setUserId(loginResp.getUserId());
             System.out.println("Token captured");
             log.info("Expected Status: {}, Actual Status: {}", expectedStatusCode, actualStatusCode);
         }

@@ -8,7 +8,7 @@ Feature: User Login Controller
       | team3@gmail.com        | ApiHackathon2@3        |        200 |
       | &^%$$$$team3@gmail.com | ApiHackathon2@3        |        400 |
       | team3@gmail.com        | &^%$$$$ApiHackathon2@3 |        401 |
-      | team3@hotmail.com.com  | ApiHackathon2@3        |        400 |
+      | team3@hotmail.com  | ApiHackathon2@3        |        400 |
       |        222222222222222 | ApiHackathon2@3        |        400 |
       | team3@gmail.com        |        222222222222222 |        400 |
       |                        | ApiHackathon2@3        |        400 |
@@ -24,6 +24,7 @@ Feature: User Login Controller
     Examples:
       | email           | password        | statusCode |
       | team3@gmail.com | ApiHackathon2@3 |        404 |
+ 
   Scenario Outline: Check if admin able to generate token with invalid endpoint
     Given Admin creates login request with "<email>" and "<password>"
     When Admin calls "postLoginWrongEndPoint" with "POST" http request
@@ -55,30 +56,30 @@ Feature: User Login Controller
     Given Admin creates login request with invalid content type for forgotPassword
     When Admin calls "postforgotPasswordConfirmEmail" with "POST" http request
     Then Admin receives status code 415
-  Scenario Outline: Check if admin able to generate token with invalid endpoint
+Scenario Outline: Check if admin able to generate token with invalid endpoint
     Given Admin creates login request with "<emailId>" with invalid endpoint
     When Admin calls "postforgotPasswordConfirmEmailWrongEndpoint" with "POST" http request
     And Admin receives status code <statusCode>
     Examples:
       | emailId         | statusCode |
       | team3@gmail.com |        404 |
-  Scenario: Check if admin able to generate token with Null body in POST/login/forgotpassword/confirmEmail
+ Scenario: Check if admin able to generate token with Null body in POST/login/forgotpassword/confirmEmail
     Given Admin creates login request with Null body body for post forgotPasswordConfirmEmail
     When Admin calls "postforgotPasswordConfirmEmail" with "POST" http request
     Then Admin receives status code 400
-  Scenario: Check if admin able to logout with invalid endpoint
+ Scenario: Check if admin able to logout with invalid endpoint
     Given Admin creates request with invalid endpoint
     When Admin calls "getLogoutlmswrongEndPoint" with "GET" http request
     Then Admin receives status code 404
-  Scenario: POST/logoutlms Check if admin able to logout  with invalid method
+ Scenario: POST/logoutlms Check if admin able to logout  with invalid method
     Given Admin creates request with invalid method
     When Admin calls "getLogoutlms" with "POST" http request
     Then Admin receives status code 405
-  Scenario: Check if admin able to logout with admin sets No authorization
+Scenario: Check if admin able to logout with admin sets No authorization
     Given Admin creates request with no auth
     When Admin calls "getLogoutlms" with "GET" http request
     Then Admin receives status code 401
-  Scenario: Check if admin able to logout to LMS Application
+ Scenario: Check if admin able to logout to LMS Application
     Given Check if admin able to logout to LMS Application
     When Admin calls "getLogoutlms" with "GET" http request
     Then Admin receives status code 200
