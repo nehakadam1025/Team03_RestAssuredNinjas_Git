@@ -8,6 +8,7 @@ import java.io.IOException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 //import pojo.CreatedUserData;
@@ -19,7 +20,7 @@ import utils.utility;
 
 public class UsermoduleSteps extends utility {
 	
-	private RequestSpecification req;
+	private RequestSpecification req3;
     private Response response;
 	
 
@@ -29,6 +30,7 @@ public class UsermoduleSteps extends utility {
 	public void admin_creates_post_request_for_the_lms_api_endpoint() throws IOException {
 		  
 
+<<<<<<< HEAD
 		/*String token = LoginTempData.getToken();
 
 	    req = given()
@@ -58,14 +60,28 @@ public class UsermoduleSteps extends utility {
 	            .spec(requestspecification())
 	            .header("Authorization", "Bearer " + token)
 	            .body(payload);
+=======
+//		  String token = LoginTempData.getToken(); // token from login feature
+//
+//	        req = given()
+//	                .spec(requestspecification())
+//	                .header("Authorization", "Bearer " + token).body(data.createUserPayload());
+		String token = LoginTempData.getToken(); // token from login feature
+
+        req3 = given()
+        		.spec(requestspecification())
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+	            .body(data1.createUserPayload());  
+>>>>>>> 669167619cf8f8514ad167e0f2a592bc4a18bf90
 	}
 	   
 	
 	@When("Admin calls {string} with {string} http request for user admin")
-	public void admin_calls_with_https_request_for_user_admin(String resource, String method) {
-		
-		 ApiResources resourceAPI = ApiResources.valueOf(resource);
+	public void admin_calls_with_http_request_for_user_admin(String resource, String method) {
+		ApiResources resourceAPI = ApiResources.valueOf(resource);
 
+<<<<<<< HEAD
 	        if (method.equalsIgnoreCase("POST")) {
 	            response = req.when().post(resourceAPI.getResorce());
 	        }
@@ -80,6 +96,13 @@ public class UsermoduleSteps extends utility {
 	            response = req.when().put(resourceAPI.getResorce());
 	        }*/
 	    
+=======
+		if (method.equalsIgnoreCase("POST")) {
+            response = req3.when().post(resourceAPI.getResorce());
+        } else if (method.equalsIgnoreCase("GET")) {
+            response = req3.when().get(resourceAPI.getResorce());
+        }
+>>>>>>> 669167619cf8f8514ad167e0f2a592bc4a18bf90
 	}
 	
 	@Then("Admin receives {int} Created Status with response body")
@@ -138,6 +161,7 @@ public class UsermoduleSteps extends utility {
                 "Expected " + expectedStatus + " but got " + actualStatus;
 	}
 	
+<<<<<<< HEAD
 	
 	@Given("Admin creates GET Request in the user module")
 	public void admin_creates_get_request_in_the_user_module() throws IOException {
@@ -352,6 +376,9 @@ public class UsermoduleSteps extends utility {
 	            
 	    System.out.println("✅ User deleted successfully with status: " + actualStatus);
 	}
+=======
+
+>>>>>>> 669167619cf8f8514ad167e0f2a592bc4a18bf90
 }
 	
 	
