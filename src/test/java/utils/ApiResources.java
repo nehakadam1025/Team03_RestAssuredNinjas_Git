@@ -7,6 +7,7 @@ public enum ApiResources {
 	getLogoutlms("/logoutlms"),
 	createUser("/users/roleStatus"),
 	getallUsers("/users"),
+
 	getbyid("/users"),
 	getbyroles("/users/roles"),
 	UpdateUserAPI("/users"),
