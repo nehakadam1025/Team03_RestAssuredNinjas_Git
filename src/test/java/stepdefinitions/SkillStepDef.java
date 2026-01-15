@@ -4,10 +4,13 @@ import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -20,13 +23,16 @@ public class SkillStepDef extends utility {
     private RequestSpecification req2;
     private Response response;
 
+    
     @Given("Admin creates GET Request for the LMS API endpoint")
     public void admin_creates_get_request_for_the_lms_api_endpoint() throws IOException {
 
         String token = LoginTempData.getToken(); // token from login feature
 
         req2 = given()
-                .spec(requestspecification())
+        		.spec(requestspecification())
+        		.contentType(ContentType.JSON)  // must set for JSON payload
+                .accept(ContentType.JSON)
                 .header("Authorization", "Bearer " + token);
     }
 
