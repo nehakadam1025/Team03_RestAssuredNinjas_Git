@@ -8,7 +8,6 @@ import java.io.IOException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 //import pojo.CreatedUserData;
@@ -17,10 +16,11 @@ import pojo.LoginTempData;
 import utils.ApiResources;
 import utils.TestDataBuild;
 import utils.utility;
+import io.restassured.http.ContentType;
 
 public class UsermoduleSteps extends utility {
 	
-	private RequestSpecification req3;
+	private RequestSpecification req;
     private Response response;
 	
 
@@ -30,7 +30,6 @@ public class UsermoduleSteps extends utility {
 	public void admin_creates_post_request_for_the_lms_api_endpoint() throws IOException {
 		  
 
-<<<<<<< HEAD
 		/*String token = LoginTempData.getToken();
 
 	    req = given()
@@ -59,31 +58,23 @@ public class UsermoduleSteps extends utility {
 	    req = given()
 	            .spec(requestspecification())
 	            .header("Authorization", "Bearer " + token)
+	            .contentType("application/json")
 	            .body(payload);
-=======
-//		  String token = LoginTempData.getToken(); // token from login feature
-//
-//	        req = given()
-//	                .spec(requestspecification())
-//	                .header("Authorization", "Bearer " + token).body(data.createUserPayload());
-		String token = LoginTempData.getToken(); // token from login feature
-
-        req3 = given()
-        		.spec(requestspecification())
-                .contentType(ContentType.JSON)
-                .header("Authorization", "Bearer " + token)
-	            .body(data1.createUserPayload());  
->>>>>>> 669167619cf8f8514ad167e0f2a592bc4a18bf90
 	}
 	   
 	
 	@When("Admin calls {string} with {string} http request for user admin")
-	public void admin_calls_with_http_request_for_user_admin(String resource, String method) {
-		ApiResources resourceAPI = ApiResources.valueOf(resource);
+	public void admin_calls_with_https_request_for_user_admin(String resource, String method) {
+		
+		 ApiResources resourceAPI = ApiResources.valueOf(resource);
 
-<<<<<<< HEAD
-	        if (method.equalsIgnoreCase("POST")) {
-	            response = req.when().post(resourceAPI.getResorce());
+		 if (method.equalsIgnoreCase("POST")) {
+		        response = req
+		        	.when()
+		            .post(resourceAPI.getResorce());
+		            
+		        System.out.println("Status Code: " + response.getStatusCode());
+		        System.out.println("Response: " + response.asString());
 	        }
 	        
 		 /*if (method.equalsIgnoreCase("GET")) {
@@ -96,13 +87,6 @@ public class UsermoduleSteps extends utility {
 	            response = req.when().put(resourceAPI.getResorce());
 	        }*/
 	    
-=======
-		if (method.equalsIgnoreCase("POST")) {
-            response = req3.when().post(resourceAPI.getResorce());
-        } else if (method.equalsIgnoreCase("GET")) {
-            response = req3.when().get(resourceAPI.getResorce());
-        }
->>>>>>> 669167619cf8f8514ad167e0f2a592bc4a18bf90
 	}
 	
 	@Then("Admin receives {int} Created Status with response body")
@@ -116,12 +100,20 @@ public class UsermoduleSteps extends utility {
                 "Expected " + expectedStatus + " but got " + actualStatus;
         
         if (actualStatus == 201 || actualStatus == 200) {
-        	 String userId = response.jsonPath().getString("user.userId"); 
+        	// String userId = response.jsonPath().getString("user.userId"); 
+        	String userId = response.jsonPath().getString("userId"); 
+            
+            // If it's null, try getting it from the 'user' object
+            if (userId == null) {
+                userId = response.jsonPath().getString("user.userId");
+            }
+            
             if (userId != null) {
-                CreatedUserData.setUserId(userId);
-                System.out.println("✅ Saved created user ID: " + userId);
+                CreatedUserData.setUserId(userId); // Store it for other steps
+                System.out.println("✅ SUCCESS: Captured User ID: " + userId);
             } else {
-                System.out.println("⚠️ Warning: userId not found in response");
+                System.out.println("❌ ERROR: userId not found in JSON response!");
+                System.out.println("Full Response Body: " + response.asString());
             }
         }
 	}
@@ -153,15 +145,25 @@ public class UsermoduleSteps extends utility {
 	@Then("Admin receives {int} Status for user module")
 	public void admin_receives_status_for_user_module(Integer expectedStatus) {
 	  
-		int actualStatus = response.getStatusCode();
+		/*int actualStatus = response.getStatusCode();
         System.out.println("Status Code: " + actualStatus);
         System.out.println("Response: " + response.asString());
 
         assert actualStatus == expectedStatus :
-                "Expected " + expectedStatus + " but got " + actualStatus;
+                "Expected " + expectedStatus + " but got " + actualStatus;*/
+		int actualStatus = response.getStatusCode();
+	    System.out.println("Status Code: " + actualStatus);
+	    System.out.println("Response: " + response.asString());
+
+	    assert actualStatus == expectedStatus :
+	            "Expected " + expectedStatus + " but got " + actualStatus;
+	    
+	    // ❌ DON'T extract userId from GET ALL - it returns an array!
+	    // The userId should already be set from the POST scenario
+	    
+	    System.out.println("✅ GET request successful. Current userId: " + CreatedUserData.getUserId());
 	}
 	
-<<<<<<< HEAD
 	
 	@Given("Admin creates GET Request in the user module")
 	public void admin_creates_get_request_in_the_user_module() throws IOException {
@@ -210,17 +212,6 @@ public class UsermoduleSteps extends utility {
 	public void admin_receives_ok_status_in_user_module(Integer expectedStatus) {
 	    
 		
-		/*int actualStatus = response.getStatusCode();
-        System.out.println("Status Code: " + actualStatus);
-        System.out.println("Response: " + response.asString());
-
-        assert actualStatus == expectedStatus :
-                "Expected " + expectedStatus + " but got " + actualStatus;
-        if (actualStatus == 201) {
-            String userId = response.jsonPath().getString("userId"); // Adjust based on your response
-            CreatedUserData.setUserId(userId);
-            System.out.println("Saved created user ID: " + userId);
-        }*/
 		int actualStatus = response.getStatusCode();
 	    System.out.println("Status Code: " + actualStatus);
 	    System.out.println("Response: " + response.asString());
@@ -229,8 +220,11 @@ public class UsermoduleSteps extends utility {
 	            "Expected " + expectedStatus + " but got " + actualStatus;
 	    
 	    if (actualStatus == 201 || actualStatus == 200) {
-	        // ✅ FIXED: Extract userId from nested "user" object
-	        String userId = response.jsonPath().getString("user.userId");  // ← CHANGED
+	        // Try both formats since GET might return differently
+	        String userId = response.jsonPath().getString("userId");
+	        if (userId == null) {
+	            userId = response.jsonPath().getString("user.userId");
+	        }
 	        
 	        if (userId != null) {
 	            CreatedUserData.setUserId(userId);
@@ -302,6 +296,7 @@ public class UsermoduleSteps extends utility {
 	    req = given()
 	            .spec(requestspecification())
 	            .header("Authorization", "Bearer " + token)
+	            .contentType("application/json")
 	            .body(updatePayload);
 	}
 
@@ -318,7 +313,10 @@ public class UsermoduleSteps extends utility {
 	    System.out.println("Full URL: " + resourceAPI.getResorce() + "/" + userId);
 	    
 	    if (method.equalsIgnoreCase("PUT")) {
-	        response = req.when().put(resourceAPI.getResorce() + "/" + userId);
+	        response = req
+	       //     .contentType(ContentType.JSON)  // ✅ ADD THIS - Critical for 415 fix!
+	            .when()
+	            .put(resourceAPI.getResorce() + "/" + userId);
 	    }
 	}
 
@@ -376,9 +374,6 @@ public class UsermoduleSteps extends utility {
 	            
 	    System.out.println("✅ User deleted successfully with status: " + actualStatus);
 	}
-=======
-
->>>>>>> 669167619cf8f8514ad167e0f2a592bc4a18bf90
 }
 	
 	
