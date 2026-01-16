@@ -1,1 +1,0 @@
-{"uuid":"080c1645-4822-488c-937d-81afcf216796","name":"Scenario: Post:/login/forgotpassword/confirmEmail Check if admin able to generate token with invalid content type","children":["464c65b9-1169-48ff-b16a-c2d1b1d9428a"],"befores":[],"afters":[],"start":1768419989511,"stop":1768419989865}

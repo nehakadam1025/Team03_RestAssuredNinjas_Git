@@ -49,7 +49,7 @@ public class ProgramStepDef extends utility {
 
 	@Given("Admin creates POST Request for the program module")
 	public void admin_creates_post_request_for_the_program_module() throws IOException {
-		programRequest programPayload = new programRequest("CreatedusingPOJOnew", "AutomationProgramnew", "Active");
+		programRequest programPayload = new programRequest("NewProgramTeam3a", "Team3Automatica", "Active");
 		String token = LoginTempData.getToken();
 		req3 = given().spec(requestspecification()).header("Authorization", "Bearer " + token).body(programPayload);
 
@@ -143,7 +143,7 @@ public class ProgramStepDef extends utility {
 	    // Updated payload
 	    String updatePayload =
 	            "{"
-	          + "\"programName\": \"UpdatAutomaProgram\","
+	          + "\"programName\": \"UpdatNewProgramTe3\"," 
 	          + "\"programDescription\": \"UpdatedviPUT\","
 	          + "\"programStatus\": \"active\""
 	          + "}";
@@ -206,11 +206,11 @@ public class ProgramStepDef extends utility {
 
         if (authType.equalsIgnoreCase("Valid")) {
             String token = LoginTempData.getToken();
-            req = given()
+            req3 = given()
                     .spec(requestspecification())
                     .header("Authorization", "Bearer " + token);
         } else if (authType.equalsIgnoreCase("NoAuth")) {
-            req = given()
+            req3 = given()
                     .spec(requestspecification());
         }
     }
@@ -265,7 +265,7 @@ public class ProgramStepDef extends utility {
                 throw new IllegalArgumentException("Invalid RequestBodyType: " + requestBodyType);
         }
 
-        req = req.body(progreq);
+        req3 = req3.body(progreq);
     }
 
     
@@ -275,11 +275,11 @@ public class ProgramStepDef extends utility {
 
         if (authType.equalsIgnoreCase("Valid")) {
             String token = LoginTempData.getToken();
-            req = given()
+            req3 = given()
                     .spec(requestspecification())
                     .header("Authorization", "Bearer " + token);
         } else if (authType.equalsIgnoreCase("NoAuth")) {
-            req = given()
+            req3 = given()
                     .spec(requestspecification()); // No Authorization header
         }
     }
@@ -323,11 +323,11 @@ public class ProgramStepDef extends utility {
     @When("Admin sends HTTPS DELETE Request with program name endpoint")
     public void admin_sends_https_delete_request_with_program_name_endpoint() {
 
-        if (req == null) {
+        if (req3 == null) {
             throw new IllegalStateException("RequestSpecification is null. Authorization step missing.");
         }
 
-        response = req.when().delete(endpoint);
+        response = req3.when().delete(endpoint);
     }
 
    
@@ -335,11 +335,11 @@ public class ProgramStepDef extends utility {
     @When("Admin sends HTTPS DELETE Request with program ID endpoint")
     public void admin_sends_https_delete_request_with_program_id_endpoint() {
 
-        if (req == null) {
+        if (req3 == null) {
             throw new IllegalStateException("Authorization step is missing.");
         }
 
-        response = req.when().delete(endpoint);
+        response = req3.when().delete(endpoint);
     }
 
     // -------------------- SEND PUT REQUEST --------------------
@@ -356,7 +356,7 @@ public class ProgramStepDef extends utility {
             programName = "invalidprogram";
         }
 
-        response = req.when()
+        response = req3.when()
                 .put(resource.getResorce() + "/" + programName);
     }
     

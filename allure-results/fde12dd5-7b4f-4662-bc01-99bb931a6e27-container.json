@@ -1,1 +1,0 @@
-{"uuid":"fde12dd5-7b4f-4662-bc01-99bb931a6e27","name":"Scenario Outline: POST/login Check if admin able to generate token with invalid base URL","children":["1cf7b3eb-c092-41a1-a7f8-5a6689381f2d"],"befores":[],"afters":[],"start":1768419985982,"stop":1768419986759}

@@ -25,7 +25,7 @@ public class UserSteps extends utility {
 // :white_check_mark: NOT static
 private RequestSpecification req;
 private Response response;
-String token1;
+public static String token;
 TestDataBuild data = new TestDataBuild();
 private static final Logger log = LogManager.getLogger(UserSteps.class);
  //---------------- LOGIN ----------------
@@ -189,8 +189,8 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
     	        .accept(ContentType.JSON)
                 .body(data.confirmEmailPayload(emailId));
     }
-    @Given("Admin creates login request with Null body body for post forgotPasswordConfirmEmail")
-    public void admin_creates_login_request_with_null_body_body_for_post_forgot_password_confirm_email() throws IOException {
+    @Given("Admin creates login request with Null body for post forgotPasswordConfirmEmail")
+    public void admin_creates_login_request_with_null_body_for_post_forgot_password_confirm_email() throws IOException {
     	 req = given()
     			 .spec(requestspecification())
     			 .contentType(ContentType.JSON)
@@ -200,33 +200,36 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
 //    //----------------------resetPassword---------------------/
     @Given("Admin creates login request with {string} and {string} for resetPassword")
     public void admin_creates_login_request_with_and_for_reset_password(String email, String password) throws IOException {
-    	token1 = LoginTempData.getToken();
+    	token = LoginTempData.getToken();
     	req = given()
     			.spec(requestspecification())
     			.contentType(ContentType.JSON)
     	        .accept(ContentType.JSON)
-                .header("Authorization", "Bearer " + token1)
+                .header("Authorization", "Bearer " + token)
                 .body(data.userloginPayload(email, password));
     }
     
     @Given("Admin performs resetPassword test {string}")
     public void admin_performs_reset_password_test(String rowNumber) throws IOException {
-    	 Map<String, String> row =
-                 GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
+    	String token = LoginTempData.getToken();
+        Map<String, String> row =
+                GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
 
-         if (row == null) {
-             throw new RuntimeException("No Excel data found for row: " + rowNumber);
-         }
+        if (row == null) {
+            throw new RuntimeException("No Excel data found for row: " + rowNumber);
+        }
 
-         String email = row.getOrDefault("email", "").trim();
-         String password = row.getOrDefault("password", "").trim();
+        String email = row.getOrDefault("email", "").trim();
+        String password = row.getOrDefault("password", "").trim();
 
-         req = given()
-                 .spec(requestspecification())
-                 .contentType(ContentType.JSON)
-                 .accept(ContentType.JSON)
-                 .header("Authorization", "Bearer " + token1)
+        req = given()
+                .spec(requestspecification())
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                 .header("Authorization", "Bearer " + token)
                  .body(data.userloginPayload(email, password));
+        
+        System.out.println(token);
          
          
          log.info("resetPassword | Row: {} | Email: {} | PWD :{}", rowNumber, email, password);
@@ -234,6 +237,8 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
     }
     @Given("Admin creates login request with invalid content type for resetPassword")
     public void admin_creates_login_request_with_invalid_content_type_for_reset_password() throws IOException {
+    	
+    	String token = LoginTempData.getToken();
     	String plainTextBody = "{\r\n"
         		+ "  \"userLoginEmailId\": \"team3@gmail.com\",\r\n"
         		+ "  \"password\": \"ApiHackathon2@3\"\r\n"
@@ -243,26 +248,27 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
                 .spec(requestspecification())
                 .contentType("text/plain")   // force plain text
                 .accept(ContentType.JSON)
-                .body(plainTextBody);        // STRING body
+                .body(plainTextBody)
+                .header("Authorization", "Bearer " + token);
     }
 
     @Given("Admin creates request with invalid method")
     public void admin_creates_request_with_invalid_method() throws IOException {
-    	token1 = LoginTempData.getToken();
+    	token = LoginTempData.getToken();
     	req = given()
                 .spec(requestspecification())
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .header("Authorization", "Bearer " + token1);
+                .header("Authorization", "Bearer " + token);
     }
     @Given("Admin creates request with invalid endpoint")
     public void admin_creates_request_with_invalid_endpoint() throws IOException {
-    	token1 = LoginTempData.getToken();
+    	token = LoginTempData.getToken();
     	req = given()
     			.spec(requestspecification())
     			.contentType(ContentType.JSON)
     	        .accept(ContentType.JSON)
-                .header("Authorization", "Bearer " + token1);
+                .header("Authorization", "Bearer " + token);
     }
     @Given("Admin creates request with no auth")
     public void admin_creates_request_with_no_auth() throws IOException {
@@ -273,12 +279,12 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
     }
     @Given("Check if admin able to logout to LMS Application")
     public void check_if_admin_able_to_logout_to_lms_application() throws IOException {
-    	token1 = LoginTempData.getToken();
+    	token = LoginTempData.getToken();
     	req = given()
     			.spec(requestspecification())
     			.contentType(ContentType.JSON)
     	        .accept(ContentType.JSON)
-                .header("Authorization", "Bearer " + token1);
+                .header("Authorization", "Bearer " + token);
     }
     // ---------------- COMMON API CALL ----------------
     @When("Admin calls {string} with {string} http request")
@@ -309,4 +315,12 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
         }
     }
 
+    @Given("Check if admin able to logout to with no token")
+    public void check_if_admin_able_to_logout_to_with_no_token() throws IOException {
+    	req = given()
+    			.spec(requestspecification())
+    			.contentType(ContentType.JSON)
+    	        .accept(ContentType.JSON);
+               
+    }
 }

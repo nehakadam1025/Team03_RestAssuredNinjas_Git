@@ -1,1 +1,0 @@
-{"uuid":"dc785cb8-fd61-436f-9c63-bab3bcb715ec","name":"Scenario: Check if admin able to generate token with Null body in POST/login/forgotpassword/confirmEmail","children":["1da81b34-478e-48dd-9566-cee2c762d15a"],"befores":[],"afters":[],"start":1768419490902,"stop":1768419491183}

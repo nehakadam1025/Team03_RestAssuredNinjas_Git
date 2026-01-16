@@ -1,1 +1,0 @@
-{"uuid":"e5764159-928a-424c-b752-601310b331eb","name":"Scenario Outline: Post:/login/forgotpassword/confirmEmail Check if admin able to generate token with valid credential for confirm email","children":["201250b7-864b-4c03-8af1-dd3023f7d9ba"],"befores":[],"afters":[],"start":1768419989088,"stop":1768419989499}

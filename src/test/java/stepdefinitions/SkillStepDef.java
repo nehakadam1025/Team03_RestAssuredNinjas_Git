@@ -27,8 +27,8 @@ public class SkillStepDef extends utility {
 	private RequestSpecification req2;
 	private Response response;
 
-	@Given("Admin creates POST Request for the LMS API endpoint")
-	public void admin_creates_post_request_for_the_lms_api_endpoint() throws IOException {
+	@Given("Admin creates POST Request for the LMS API endpoint for skill")
+	public void admin_creates_post_request_for_the_lms_api_endpoint_for_skill() throws IOException {
 
 		String token = LoginTempData.getToken();
 		SkillRequest skillpayload = new SkillRequest("Javamee");

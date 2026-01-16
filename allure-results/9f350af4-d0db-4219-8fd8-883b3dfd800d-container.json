@@ -1,1 +1,0 @@
-{"uuid":"9f350af4-d0db-4219-8fd8-883b3dfd800d","name":"Scenario Outline: POST/resetPassword Check if admin able to resetPassword for special character in password and invalid emailid","children":["fff38707-9e2e-4e51-85d4-dd77e80820ac"],"befores":[],"afters":[],"start":1768419492332,"stop":1768419492635}

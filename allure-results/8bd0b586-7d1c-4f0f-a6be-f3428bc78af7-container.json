@@ -1,1 +1,0 @@
-{"uuid":"8bd0b586-7d1c-4f0f-a6be-f3428bc78af7","name":"Scenario: POST/login Check if admin able to generate token with invalid content type","children":["48831401-26c1-478b-b9ce-67d16641d194"],"befores":[],"afters":[],"start":1768419985556,"stop":1768419985970}
