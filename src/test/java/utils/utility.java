@@ -17,10 +17,13 @@ import java.util.Properties;
 
 public class utility {
 
+
+	
     private static final Logger log = LogManager.getLogger(utility.class);
     private static RequestSpecification req;
 
-    public RequestSpecification requestspecification() throws IOException {
+
+	public RequestSpecification requestspecification() throws IOException {
 
         if (req == null) {
             PrintStream logStream = new PrintStream(new FileOutputStream("logs/logging.txt", true));
@@ -63,5 +66,6 @@ public class utility {
         String resp = response.asString();
         return io.restassured.path.json.JsonPath.from(resp).get(key).toString();
     }
+
 }
 

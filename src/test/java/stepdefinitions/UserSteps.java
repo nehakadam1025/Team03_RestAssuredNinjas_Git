@@ -1,40 +1,11 @@
-//package stepdefinitions;
-//import static io.restassured.RestAssured.given;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-//import java.io.IOException;
-//import java.util.Map;
-//
-//import io.cucumber.java.en.Given;
-//import io.cucumber.java.en.When;
-//import io.cucumber.java.en.Then;
-//import io.restassured.http.ContentType;
-//import io.restassured.response.Response;
-//import io.restassured.specification.RequestSpecification;
-//import pojo.LoginResponse;
-//import pojo.LoginTempData;
-//import utils.ApiResources;
-//import utils.GlobalTestData;
-//import utils.TestDataBuild;
-//import utils.utility;
-//public class UserSteps extends utility {
-//    // :white_check_mark: NOT static
-//    private RequestSpecification req;
-//    private Response response;
-//    String token1;
-//    TestDataBuild data = new TestDataBuild();
-//    private static final Logger log = LogManager.getLogger(UserSteps.class);
-    // ---------------- LOGIN ----------------
- package stepdefinitions;
+package stepdefinitions;
 
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
 import java.util.Map;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -50,6 +21,7 @@ import utils.TestDataBuild;
 import utils.utility;
 
 public class UserSteps extends utility {
+
 // :white_check_mark: NOT static
 private RequestSpecification req;
 private Response response;
@@ -57,7 +29,6 @@ String token1;
 TestDataBuild data = new TestDataBuild();
 private static final Logger log = LogManager.getLogger(UserSteps.class);
  //---------------- LOGIN ----------------
-
 
         String filePath = "src/test/resources/testdata/TestData.xlsx";
         String sheetName = "postLogin";
@@ -67,13 +38,7 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
     public void admin_performs_login_test_for_excel_row(String rowNumber) throws IOException {
     	GlobalTestData.getInstance().loadExcelData(filePath, sheetName);
 
-//
-//    	    // Load Excel data globally once
-//    	    String filePath = "src/test/resources/testdata/TestData.xlsx";
-//    	    String sheetName = "postLogin";
-//    	    GlobalTestData.getInstance().loadExcelData(filePath, sheetName);
-
-    	    // Get row data by TestcaseId / rowNumber
+    	// Get row data by TestcaseId / rowNumber
     	    Map<String, String> row = GlobalTestData.getInstance().getDataByTestcaseId(rowNumber);
     	    if (row == null) {
     	        throw new RuntimeException("No Excel data found for row: " + rowNumber);
@@ -82,7 +47,6 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
     	    // Extract email and password dynamically from Excel
     	    String email = row.getOrDefault("email", "").trim();
     	    String password = row.getOrDefault("password", "").trim();
-
 
     	    // Create login request dynamically (using your existing method)
     	    req = given()
@@ -177,11 +141,7 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
     // ---------------- FORGOT PASSWORD CONFIRM EMAIL ----------------
     @Given("Admin creates request with valid email {string}")
     public void admin_creates_request_with_valid_email(String emailId) throws IOException {
-//        String payload = "{\r\n"
-//        		+ "  \"userLoginEmailId\": \"team3@gmail.com\"\r\n"
-//        		+ "}\r\n"
-//        		+ "      ";
-        //.header("Authorization", "Bearer " + token1);
+
         req = given()
         		.spec(requestspecification())
         		.contentType(ContentType.JSON)
@@ -285,14 +245,7 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
                 .accept(ContentType.JSON)
                 .body(plainTextBody);        // STRING body
     }
-//    //----------------------logoutlms........................./
-////    @Given("admin sets authorization to bearer Token with creates request")
-////    public void admin_sets_authorization_to_bearer_token_with_creates_request() throws IOException {
-////    	token1 = LoginTempData.getToken();
-////    	req = given()
-////                .spec(requestspecification())
-////                .header("Authorization", "Bearer " + token1);
-////    }
+
     @Given("Admin creates request with invalid method")
     public void admin_creates_request_with_invalid_method() throws IOException {
     	token1 = LoginTempData.getToken();
@@ -355,4 +308,5 @@ private static final Logger log = LogManager.getLogger(UserSteps.class);
             log.info("Expected Status: {}, Actual Status: {}", expectedStatusCode, actualStatusCode);
         }
     }
+
 }

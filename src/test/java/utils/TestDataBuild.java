@@ -1,14 +1,10 @@
 package utils;
-
-
-
 import pojo.ConfirmEmailRequest;
 import pojo.LoginRequest;
-
-
+import pojo.programRequest;
 import java.util.Collections;
-
-
+import pojo.SkillRequest;
+import java.util.Collections;
 import pojo.LoginRequest;
 import pojo.UserLogin;
 //import pojo.UserLogin;
@@ -20,9 +16,25 @@ import java.util.HashMap;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class TestDataBuild {
-	
+
+	public programRequest programPayload(String programName, String programDescription, String programStatus) {
+
+		programRequest program = new programRequest();
+		program.setProgramName(programName);
+		program.setProgramDescription(programDescription);
+		program.setProgramStatus(programStatus);
+
+		return program;
+	}
+
+	public SkillRequest skillpayload(String skillname) {
+		
+		SkillRequest skilln=new SkillRequest();
+		skilln.setSkillName(skillname);
+		return skilln;
+	}
+
 	
     // 🔹 New method for Scenario Outline
     public LoginRequest userloginPayload(String email, String password) {
@@ -40,16 +52,13 @@ public class TestDataBuild {
         return cpasswordloginrequest;
     }
 
-
-    
- 
-    
 Faker faker = new Faker();
     
 //Generate dynamic email with timestamp
 public String generateDynamicEmail() {
     String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
     return "user" + timestamp + "@gmail.com";  // ✅ @gmail.com instead of @lmstest.com
+
 }
 
 public String generateDynamicPhone() {

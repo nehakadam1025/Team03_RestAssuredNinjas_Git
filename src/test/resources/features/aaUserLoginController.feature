@@ -1,6 +1,5 @@
 #Feature: User Login Controller
 
-  
   Scenario Outline: POST /login Check if admin able to generate token with valid and invalid credential using Excel row
   Given Admin performs login test for Excel row "<rowNumber>"
   When Admin calls "postLoginApi" with "POST" http request

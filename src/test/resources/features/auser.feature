@@ -1,3 +1,4 @@
+
 Feature: User Login Controller
   Scenario Outline: POST/login User login with valid and invalid credentials
     Given Admin creates login request with "<email>" and "<password>"
@@ -109,3 +110,4 @@ Scenario: Check if admin able to logout with admin sets No authorization
     Examples:
       | email           | password        | statusCode |
       | team3@gmail.com | ApiHackathon2@3 |        405 |
+
