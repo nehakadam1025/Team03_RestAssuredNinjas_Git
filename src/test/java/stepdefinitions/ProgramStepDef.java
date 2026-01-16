@@ -49,7 +49,7 @@ public class ProgramStepDef extends utility {
 
 	@Given("Admin creates POST Request for the program module")
 	public void admin_creates_post_request_for_the_program_module() throws IOException {
-		programRequest programPayload = new programRequest("NewProgramTeam3a", "Team3Automatica", "Active");
+		programRequest programPayload = new programRequest("ProgramTeam4a", "Team3Automaticaa", "Active");
 		String token = LoginTempData.getToken();
 		req3 = given().spec(requestspecification()).header("Authorization", "Bearer " + token).body(programPayload);
 
@@ -143,7 +143,7 @@ public class ProgramStepDef extends utility {
 	    // Updated payload
 	    String updatePayload =
 	            "{"
-	          + "\"programName\": \"UpdatNewProgramTe3\"," 
+	          + "\"programName\": \"UpdatProgramTeam4a\"," 
 	          + "\"programDescription\": \"UpdatedviPUT\","
 	          + "\"programStatus\": \"active\""
 	          + "}";

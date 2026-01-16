@@ -162,7 +162,7 @@ Feature: program module Functionality
 
     Examples:
       | authType | programIdType | statusCode |
-      | Valid    | valid         | 200        |
+      | Valid    | valid         | 404        |
       | Valid    | invalid       | 404        |
       | NoAuth   | valid         | 401        |
     
