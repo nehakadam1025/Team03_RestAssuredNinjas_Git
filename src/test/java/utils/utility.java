@@ -1,65 +1,71 @@
+
 package utils;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.Properties;
-
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
-import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class utility {
 
-	public static RequestSpecification req;
+
+	
+    private static final Logger log = LogManager.getLogger(utility.class);
+    private static RequestSpecification req;
+
 
 	public RequestSpecification requestspecification() throws IOException {
 
-//        // ✅ Append mode
-//        PrintStream log = new PrintStream(
-//                new FileOutputStream("logging.txt", true)
-//        );
-		// ✅ Append mode
+        if (req == null) {
+            PrintStream logStream = new PrintStream(new FileOutputStream("logs/logging.txt", true));
+            req = new RequestSpecBuilder()
+                    .setBaseUri(getGlobalValue("baseUrl"))
+                    .addFilter(RequestLoggingFilter.logRequestTo(logStream))
+                    .addFilter(ResponseLoggingFilter.logResponseTo(logStream))
+                    .build();
+            log.info("Request specification created with baseUrl: {}", getGlobalValue("baseUrl"));
+        }
+        return req;
+    }
 
-		// RestAssured.baseURI =
-		// "https://lms-hackathon-nov-2025-8dd40899c026.herokuapp.com/lms";
+    public RequestSpecification requestspecificationWithBaseUrl(String baseUrl) throws IOException {
 
-		if (req == null) {
-			PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
-			req = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")).setContentType(ContentType.JSON)
-					.addFilter(RequestLoggingFilter.logRequestTo(log))
-					.addFilter(ResponseLoggingFilter.logResponseTo(log)).build();
+        if (baseUrl == null || baseUrl.isEmpty()) {
+            throw new RuntimeException("Base URL is NULL. Check config.properties key name");
+        }
 
-			return req;
-		}
-		return req;
-//        return new RequestSpecBuilder()
-//                .setBaseUri(RestAssured.baseURI)
-//                .setContentType(ContentType.JSON)
-//          .addFilter(RequestLoggingFilter.logRequestTo(log))
-//          .addFilter(ResponseLoggingFilter.logResponseTo(log))
-//          .build();
+        PrintStream logStream = new PrintStream(new FileOutputStream("logs/logging.txt", true));
+        log.info("Request specification created with custom baseUrl: {}", baseUrl);
 
-	}
+        return new RequestSpecBuilder()
+                .setBaseUri(baseUrl)
+                .addFilter(RequestLoggingFilter.logRequestTo(logStream))
+                .addFilter(ResponseLoggingFilter.logResponseTo(logStream))
+                .build();
+    }
 
-	public String getGlobalValue(String key) throws IOException {
-		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\Ashish\\git\\Team03_RestAssuredNinjas_Git\\src\\test\\resources\\config.properties");
-		prop.load(fis);
-		return prop.getProperty(key);
-		// return prop;
-	}
+    public String getGlobalValue(String key) throws IOException {
+        Properties prop = new Properties();
+        try (InputStream fis = getClass().getClassLoader().getResourceAsStream("config.properties")) {
+            if (fis == null) throw new RuntimeException("config.properties not found in classpath");
+            prop.load(fis);
+        }
+        return prop.getProperty(key);
+    }
 
-	public String getJsonPath(Response response, String key) {
-		String resp = response.asString();
-		JsonPath js = new JsonPath(resp);
-		return js.get(key).toString();
-	}
+    public String getJsonPath(Response response, String key) {
+        String resp = response.asString();
+        return io.restassured.path.json.JsonPath.from(resp).get(key).toString();
+    }
+
 }
+

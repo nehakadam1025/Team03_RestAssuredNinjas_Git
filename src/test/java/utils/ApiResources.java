@@ -1,3 +1,4 @@
+
 package utils;
 
 public enum ApiResources {
@@ -25,7 +26,22 @@ public enum ApiResources {
 	updateskill("/updateSkills/2"),
 	updateskillwithinvalid("/updateSkills/vb"),
 	deleteskill("/deletebySkillId/98"),
-	deleteskillinvalid("/deletebySkillId/ui");
+	deleteskillinvalid("/deletebySkillId/ui"),
+	
+	postforgotPasswordConfirmEmailWrongEndpoint("/login/forgotpassword/confirmEmailhhghh"),
+	postresetPassword("/resetPassword"),
+	postresetPasswordWrongEndpoint("/resetPassworddddd"),
+	
+	getLogoutlmswrongEndPoint("/logoutlmssssss"),
+	createUser("/users/roleStatus"),
+	getallUsers("/users"),
+	getbyid("/users"),
+	getbyroles("/users/roles"),
+	UpdateUserAPI("/users"),
+	DeleteUserAPI("/users"),
+	getall("/allSkillMaster"),
+	
+	getSkillName("/skills");
 	
 	//updateprogrambyname("/program/Python");
 	
