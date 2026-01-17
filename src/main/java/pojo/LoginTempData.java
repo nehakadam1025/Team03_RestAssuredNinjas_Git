@@ -11,12 +11,4 @@ public class LoginTempData {
     public static void setToken(String authToken) {
         token = authToken;
     }
-
-//    public static String getUserId() {
-//        return userId;
-//    }
-//
-//    public static void setUserId(String id) {
-//        userId = id;
-//    }
 }
