@@ -4,10 +4,6 @@ import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
 import java.util.List;
-
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -156,4 +152,5 @@ public class SkillStepDef extends utility {
 			System.out.println("Skill Name: " + global.skillName);
 		}
 	}
+
 }
