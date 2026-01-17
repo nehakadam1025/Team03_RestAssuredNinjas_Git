@@ -1,13 +1,11 @@
 Feature: SkillMaster Functionality
 
-
- Scenario: Check if admin able to create a new Skill Master with valid endpoint
+    Scenario: Check if admin able to create a new Skill Master with valid endpoint
     Given Admin creates POST Request for the LMS API endpoint for skill
     When Admin calls "createSkill" with "POST" http request for skill master
     Then Admin receives 201 Status
-    
-    
- Scenario: Check if admin able to get all  Skill Master with valid endpoint
+        
+    Scenario: Check if admin able to get all  Skill Master with valid endpoint
     Given Admin creates GET Request for the LMS API endpoint
     When Admin calls "getallSkillMaster" with "GET" http request for skill master
     Then Admin receives 200 Status
@@ -27,7 +25,7 @@ Feature: SkillMaster Functionality
     When Admin calls "getbyskillname" with "GET" http request for skill master
     Then Admin receives 200 Status
     
- Scenario: Check if admin able to get Skills with invalid endpoint
+    Scenario: Check if admin able to get Skills with invalid endpoint
     Given Admin creates GET Request for the LMS API endpoint
     When Admin calls "getbyinvalidskillname" with "GET" http request for skill master
     Then Admin receives 404 Status
